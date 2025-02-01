@@ -1,6 +1,5 @@
 package com.bartek.NetworkingPlatform.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +9,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Data
 @Entity
@@ -19,22 +18,36 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "roles")
-public class Role {
+@Table(name = "experiences")
+public class Experience {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(unique = true)
-    private String name;
+    private Long id;
+
+    @Column(name = "company_name")
+    private String companyName;
+
+    private String position;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    private String description;
 
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "updated_at", insertable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    @ManyToOne
+    @JoinColumn(name = "profile_id", nullable = false)
+    private Profile profile;
+
 }
