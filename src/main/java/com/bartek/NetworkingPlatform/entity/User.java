@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "roles")
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -71,6 +72,11 @@ public class User implements UserDetails {
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override
