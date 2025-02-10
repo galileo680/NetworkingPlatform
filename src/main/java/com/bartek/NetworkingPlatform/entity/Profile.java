@@ -1,10 +1,7 @@
 package com.bartek.NetworkingPlatform.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,11 +10,14 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+
 @Entity
 @Builder
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "profiles")
 public class Profile {
@@ -42,6 +42,7 @@ public class Profile {
 
     @OneToOne
     @JoinColumn(name = "user_id", unique = true, nullable = false)
+    @ToString.Exclude
     private User user;
 
     @ManyToMany
@@ -50,5 +51,14 @@ public class Profile {
             joinColumns = @JoinColumn(name = "profile_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
+    @ToString.Exclude
     private Set<Skill> skills = new HashSet<>();
+
+    @OneToMany(mappedBy = "profile")
+    @ToString.Exclude
+    private Set<Education> educations = new HashSet<>();
+
+    @OneToMany(mappedBy = "profile")
+    @ToString.Exclude
+    private Set<Experience> experiences = new HashSet<>();
 }

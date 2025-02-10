@@ -10,11 +10,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Data
 @Entity
 @Builder
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "roles")
 public class Role {
@@ -34,5 +36,6 @@ public class Role {
     private LocalDateTime updatedAt;
 
     @ManyToMany(mappedBy = "roles")
+    @ToString.Exclude
     private Set<User> users;
 }

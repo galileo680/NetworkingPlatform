@@ -1,22 +1,24 @@
 package com.bartek.NetworkingPlatform.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
-@Data
+
 @Entity
 @Builder
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "experiences")
 public class Experience {
@@ -48,6 +50,7 @@ public class Experience {
 
     @ManyToOne
     @JoinColumn(name = "profile_id", nullable = false)
+    @ToString.Exclude
     private Profile profile;
 
 }

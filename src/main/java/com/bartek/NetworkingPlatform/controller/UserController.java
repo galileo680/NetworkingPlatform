@@ -1,4 +1,4 @@
-package com.bartek.NetworkingPlatform;
+package com.bartek.NetworkingPlatform.controller;
 
 import com.bartek.NetworkingPlatform.dto.request.LoginRequest;
 import com.bartek.NetworkingPlatform.dto.request.RegisterRequest;

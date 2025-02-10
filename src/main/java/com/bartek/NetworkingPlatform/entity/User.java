@@ -1,10 +1,7 @@
 package com.bartek.NetworkingPlatform.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,11 +16,13 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Data
 @Entity
 @Builder
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
 public class User implements UserDetails {
@@ -61,9 +60,11 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+    @ToString.Exclude
     private Set<Role> roles;
 
     @ManyToMany(mappedBy = "participants")
+    @ToString.Exclude
     private Set<Chat> chats;
 
     @Override
