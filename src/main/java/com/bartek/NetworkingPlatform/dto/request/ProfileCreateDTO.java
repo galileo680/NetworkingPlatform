@@ -1,4 +1,4 @@
-package com.bartek.NetworkingPlatform.dto;
+package com.bartek.NetworkingPlatform.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
-public class ProfileDTO {
+public class ProfileCreateDTO {
 
     @NotBlank(message = "Headline is required")
     @Size(min = 2, max = 50,  message = "Wrong headline")
