@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidCredentialsException("Password does not match");
         }
 
-        //To do: check if account is activated via email
+        //ToDo: check if account is activated via email
 
         String token = jwtService.generateToken(user);
 
