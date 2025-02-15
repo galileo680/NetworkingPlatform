@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.service.Impl;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileCreateDTO;
-import com.bartek.NetworkingPlatform.dto.request.ProfileUpdateDTO;
+import com.bartek.NetworkingPlatform.dto.request.ProfileCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.ProfileUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ProfileResponseDTO;
 import com.bartek.NetworkingPlatform.entity.Profile;
 import com.bartek.NetworkingPlatform.entity.User;
@@ -11,6 +11,7 @@ import com.bartek.NetworkingPlatform.mapper.ProfileMapper;
 import com.bartek.NetworkingPlatform.repository.ProfileRepository;
 import com.bartek.NetworkingPlatform.service.ProfileService;
 import com.bartek.NetworkingPlatform.service.UserService;
+import com.bartek.NetworkingPlatform.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProfileServiceImpl implements ProfileService {
 
-    private final UserService userService;
-
     private final ProfileRepository profileRepository;
 
     private final ProfileMapper profileMapper;
 
+    private final UserUtil userUtil;
+
     @Override
-    public ProfileResponseDTO createProfile(ProfileCreateDTO profileDTO) {
-        User user = userService.getCurrentUser();
+    public ProfileResponseDTO createProfile(ProfileCreateRequest profileDTO) {
+        User user = userUtil.getCurrentUser();
 
         if(profileRepository.findByUserId(user.getId()).isPresent()){
             throw new ProfileAlreadyExistsException("User already has a profile");
@@ -49,8 +50,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public ProfileResponseDTO updateProfile(ProfileUpdateDTO profileDTO) {
-        User user = userService.getCurrentUser();
+    public ProfileResponseDTO updateProfile(ProfileUpdateRequest profileDTO) {
+        User user = userUtil.getCurrentUser();
 
         Profile profile = profileRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new NotFoundException("User profile not found"));

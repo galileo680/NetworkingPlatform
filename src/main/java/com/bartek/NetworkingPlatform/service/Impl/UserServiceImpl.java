@@ -13,6 +13,7 @@ import com.bartek.NetworkingPlatform.repository.RoleRepository;
 import com.bartek.NetworkingPlatform.repository.UserRepository;
 import com.bartek.NetworkingPlatform.security.JwtService;
 import com.bartek.NetworkingPlatform.service.UserService;
+import com.bartek.NetworkingPlatform.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -39,6 +40,8 @@ public class UserServiceImpl implements UserService {
     private final JwtService jwtService;
 
     private final UserMapper userMapper;
+
+    private final UserUtil userUtil;
 
     @Override
     public void registerUser(RegisterRequest registerRequest) {
@@ -73,7 +76,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidCredentialsException("Password does not match");
         }
 
-        //ToDo: check if account is activated via email
+        //TODO: check if account has been activated via email
 
         String token = jwtService.generateToken(user);
 
@@ -93,14 +96,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-
-        return userRepository.findByEmail(email)
-                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
+        return userUtil.getCurrentUser();
     }
 
-    //To do
+    //TODO: implement activateAccount method
     @Override
     public void activateAccount(String activationToken) {
 
