@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.controller;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileCreateDTO;
-import com.bartek.NetworkingPlatform.dto.request.ProfileUpdateDTO;
+import com.bartek.NetworkingPlatform.dto.request.ProfileCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.ProfileUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ProfileResponseDTO;
 import com.bartek.NetworkingPlatform.service.ProfileService;
 import jakarta.validation.Valid;
@@ -25,16 +25,16 @@ public class ProfileController {
 
     @PostMapping
     public ResponseEntity<ProfileResponseDTO> createProfile(
-            @RequestBody @Valid ProfileCreateDTO profileCreateDTO
+            @RequestBody @Valid ProfileCreateRequest profileCreateRequest
     ) {
-        return ResponseEntity.ok(profileService.createProfile(profileCreateDTO));
+        return ResponseEntity.ok(profileService.createProfile(profileCreateRequest));
     }
 
     @PutMapping
     public ResponseEntity<ProfileResponseDTO> updateProfile(
-            @RequestBody @Valid ProfileUpdateDTO profileUpdateDTO
+            @RequestBody @Valid ProfileUpdateRequest profileUpdateRequest
     ) {
-        return ResponseEntity.ok(profileService.updateProfile(profileUpdateDTO));
+        return ResponseEntity.ok(profileService.updateProfile(profileUpdateRequest));
     }
 
     @DeleteMapping

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
-public class ProfileCreateDTO {
+public class ProfileCreateRequest {
 
     @NotBlank(message = "Headline is required")
     @Size(min = 2, max = 50,  message = "Wrong headline")
