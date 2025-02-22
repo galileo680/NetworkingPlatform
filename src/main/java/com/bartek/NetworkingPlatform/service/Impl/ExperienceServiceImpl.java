@@ -72,7 +72,7 @@ public class ExperienceServiceImpl implements ExperienceService {
     }
 
     @Override
-    public List<ExperienceResponseDTO> getExperiencesByProfile(Long profileId) {
+    public List<ExperienceResponseDTO> getAllExperiencesForProfile(Long profileId) {
         List<Experience> experiences = experienceRepository.findByProfileId(profileId);
         return experiences.stream()
                 .map(experienceMapper::toDTO)

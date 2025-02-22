@@ -10,7 +10,7 @@ public interface ExperienceService {
 
     ExperienceResponseDTO createExperience(ExperienceCreateRequest experienceDTO);
     ExperienceResponseDTO updateExperience(Long id, ExperienceUpdateRequest experienceDTO);
-    List<ExperienceResponseDTO> getExperiencesByProfile(Long profileId);
+    List<ExperienceResponseDTO> getAllExperiencesForProfile(Long profileId);
     void deleteExperience(Long experienceId);
 
 }
