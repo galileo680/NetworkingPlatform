@@ -2,10 +2,12 @@ package com.bartek.NetworkingPlatform.mapper;
 
 import com.bartek.NetworkingPlatform.dto.response.EducationResponseDTO;
 import com.bartek.NetworkingPlatform.entity.Education;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EducationMapper {
 
-    private EducationResponseDTO toDTO(Education education) {
+    public EducationResponseDTO toDTO(Education education) {
         return EducationResponseDTO.builder()
                 .id(education.getId())
                 .profileId(education.getProfile().getId())
