@@ -18,6 +18,7 @@ public class EducationUpdateRequest {
     private String fieldOfStudy;
 
     private LocalDate startDate;
+
     private LocalDate endDate;
 
     @Size(max = 255, message = "Description cannot exceed 255 characters.")
