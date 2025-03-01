@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface EducationService {
 
-    EducationResponseDTO createEducation(EducationCreateRequest request);
-    EducationResponseDTO updateEducation(EducationUpdateRequest request);
-    EducationResponseDTO deleteEducation(Long educationId);
+    EducationResponseDTO createEducation(Long profileId, EducationCreateRequest request);
+    EducationResponseDTO updateEducation(Long educationId, EducationUpdateRequest request);
+    void deleteEducation(Long educationId);
     List<EducationResponseDTO> getAllEducationsForProfile(Long profileId);
     EducationResponseDTO getEducationById(Long educationId);
 }
