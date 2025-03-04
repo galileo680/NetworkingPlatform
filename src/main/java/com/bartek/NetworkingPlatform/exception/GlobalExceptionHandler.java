@@ -28,8 +28,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(ProfileAlreadyExistsException.class)
-    public ResponseEntity<ExceptionResponse> handleProfileAlreadyExistsException(ProfileAlreadyExistsException ex, WebRequest request){
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleResourceAlreadyExistsException(ResourceAlreadyExistsException ex, WebRequest request){
         ExceptionResponse errorResponse = ExceptionResponse.builder()
                 .status(HttpStatus.CONFLICT.value())
                 .message(ex.getMessage())

@@ -6,11 +6,10 @@ import com.bartek.NetworkingPlatform.dto.response.ProfileResponseDTO;
 import com.bartek.NetworkingPlatform.entity.Profile;
 import com.bartek.NetworkingPlatform.entity.User;
 import com.bartek.NetworkingPlatform.exception.NotFoundException;
-import com.bartek.NetworkingPlatform.exception.ProfileAlreadyExistsException;
+import com.bartek.NetworkingPlatform.exception.ResourceAlreadyExistsException;
 import com.bartek.NetworkingPlatform.mapper.ProfileMapper;
 import com.bartek.NetworkingPlatform.repository.ProfileRepository;
 import com.bartek.NetworkingPlatform.service.ProfileService;
-import com.bartek.NetworkingPlatform.service.UserService;
 import com.bartek.NetworkingPlatform.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +33,7 @@ public class ProfileServiceImpl implements ProfileService {
         User user = userUtil.getCurrentUser();
 
         if(profileRepository.findByUserId(user.getId()).isPresent()){
-            throw new ProfileAlreadyExistsException("User already has a profile");
+            throw new ResourceAlreadyExistsException("User already has a profile");
         }
 
         Profile profile = Profile.builder()

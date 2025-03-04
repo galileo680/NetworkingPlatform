@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SkillMapper {
-    private SkillResponse mapToSkillResponse(Skill skill) {
+    public SkillResponse toDTO(Skill skill) {
         return SkillResponse.builder()
                 .id(skill.getId())
                 .name(skill.getName())
