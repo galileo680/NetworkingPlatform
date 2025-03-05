@@ -3,8 +3,8 @@ package com.bartek.NetworkingPlatform.service.Impl;
 import com.bartek.NetworkingPlatform.exception.InvalidCredentialsException;
 import com.bartek.NetworkingPlatform.exception.NotFoundException;
 import com.bartek.NetworkingPlatform.dto.UserDTO;
-import com.bartek.NetworkingPlatform.dto.request.LoginRequest;
-import com.bartek.NetworkingPlatform.dto.request.RegisterRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.LoginRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.RegisterRequest;
 import com.bartek.NetworkingPlatform.dto.response.LoginResponse;
 import com.bartek.NetworkingPlatform.entity.Role;
 import com.bartek.NetworkingPlatform.entity.User;
@@ -16,16 +16,11 @@ import com.bartek.NetworkingPlatform.service.UserService;
 import com.bartek.NetworkingPlatform.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j

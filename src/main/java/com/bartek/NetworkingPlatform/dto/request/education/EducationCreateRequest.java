@@ -1,4 +1,4 @@
-package com.bartek.NetworkingPlatform.dto.request;
+package com.bartek.NetworkingPlatform.dto.request.education;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

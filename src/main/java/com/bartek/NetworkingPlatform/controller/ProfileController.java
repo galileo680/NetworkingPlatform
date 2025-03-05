@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.controller;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.ProfileUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.profile.ProfileCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.profile.ProfileUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ProfileResponseDTO;
 import com.bartek.NetworkingPlatform.service.ProfileService;
 import jakarta.validation.Valid;

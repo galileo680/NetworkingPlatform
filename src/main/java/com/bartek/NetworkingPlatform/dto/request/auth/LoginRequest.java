@@ -1,4 +1,4 @@
-package com.bartek.NetworkingPlatform.dto.request;
+package com.bartek.NetworkingPlatform.dto.request.auth;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

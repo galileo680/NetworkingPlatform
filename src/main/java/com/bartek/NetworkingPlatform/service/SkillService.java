@@ -1,11 +1,10 @@
 package com.bartek.NetworkingPlatform.service;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileSkillsRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.profile.ProfileSkillsRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.SkillResponse;
 
-import java.util.List;
 import java.util.Set;
 
 public interface SkillService {

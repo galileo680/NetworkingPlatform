@@ -1,10 +1,9 @@
-package com.bartek.NetworkingPlatform.dto.request;
+package com.bartek.NetworkingPlatform.dto.request.experience;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

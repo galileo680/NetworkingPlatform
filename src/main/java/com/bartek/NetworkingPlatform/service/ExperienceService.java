@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.service;
 
-import com.bartek.NetworkingPlatform.dto.request.ExperienceCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.ExperienceUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ExperienceResponseDTO;
 
 import java.util.List;

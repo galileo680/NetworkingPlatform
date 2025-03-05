@@ -1,8 +1,7 @@
 package com.bartek.NetworkingPlatform.service.Impl;
 
-import com.bartek.NetworkingPlatform.dto.ExperienceDTO;
-import com.bartek.NetworkingPlatform.dto.request.ExperienceCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.ExperienceUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ExperienceResponseDTO;
 import com.bartek.NetworkingPlatform.entity.Experience;
 import com.bartek.NetworkingPlatform.entity.Profile;

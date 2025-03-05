@@ -1,8 +1,8 @@
 package com.bartek.NetworkingPlatform.controller;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileSkillsRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.profile.ProfileSkillsRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.SkillResponse;
 import com.bartek.NetworkingPlatform.service.SkillService;
 import jakarta.validation.Valid;

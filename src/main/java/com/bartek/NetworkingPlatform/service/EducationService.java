@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.service;
 
-import com.bartek.NetworkingPlatform.dto.request.EducationCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.EducationUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.education.EducationCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.education.EducationUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.EducationResponseDTO;
 
 import java.util.List;

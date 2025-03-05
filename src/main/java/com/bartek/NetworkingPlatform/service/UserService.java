@@ -1,8 +1,8 @@
 package com.bartek.NetworkingPlatform.service;
 
 import com.bartek.NetworkingPlatform.dto.UserDTO;
-import com.bartek.NetworkingPlatform.dto.request.LoginRequest;
-import com.bartek.NetworkingPlatform.dto.request.RegisterRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.LoginRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.RegisterRequest;
 import com.bartek.NetworkingPlatform.dto.response.LoginResponse;
 import com.bartek.NetworkingPlatform.entity.User;
 

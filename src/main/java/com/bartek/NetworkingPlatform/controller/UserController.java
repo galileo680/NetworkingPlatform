@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.controller;
 
-import com.bartek.NetworkingPlatform.dto.request.LoginRequest;
-import com.bartek.NetworkingPlatform.dto.request.RegisterRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.LoginRequest;
+import com.bartek.NetworkingPlatform.dto.request.auth.RegisterRequest;
 import com.bartek.NetworkingPlatform.dto.response.LoginResponse;
 import com.bartek.NetworkingPlatform.service.UserService;
 import jakarta.mail.MessagingException;

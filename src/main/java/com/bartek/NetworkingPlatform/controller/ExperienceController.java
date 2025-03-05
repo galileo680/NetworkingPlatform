@@ -1,7 +1,7 @@
 package com.bartek.NetworkingPlatform.controller;
 
-import com.bartek.NetworkingPlatform.dto.request.ExperienceCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.ExperienceUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.experience.ExperienceUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.ExperienceResponseDTO;
 import com.bartek.NetworkingPlatform.service.ExperienceService;
 import jakarta.validation.Valid;

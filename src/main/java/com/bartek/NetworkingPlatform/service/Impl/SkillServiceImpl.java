@@ -1,8 +1,8 @@
 package com.bartek.NetworkingPlatform.service.Impl;
 
-import com.bartek.NetworkingPlatform.dto.request.ProfileSkillsRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillCreateRequest;
-import com.bartek.NetworkingPlatform.dto.request.SkillUpdateRequest;
+import com.bartek.NetworkingPlatform.dto.request.profile.ProfileSkillsRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillCreateRequest;
+import com.bartek.NetworkingPlatform.dto.request.skill.SkillUpdateRequest;
 import com.bartek.NetworkingPlatform.dto.response.SkillResponse;
 import com.bartek.NetworkingPlatform.entity.Profile;
 import com.bartek.NetworkingPlatform.entity.Skill;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
