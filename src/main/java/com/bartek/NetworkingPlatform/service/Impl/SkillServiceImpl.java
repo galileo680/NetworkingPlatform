@@ -54,17 +54,17 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public List<SkillResponse> getAllSkills() {
+    public Set<SkillResponse> getAllSkills() {
         return skillRepository.findAll().stream()
                 .map(skillMapper::toDTO)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override
-    public List<SkillResponse> searchSkills(String query) {
+    public Set<SkillResponse> searchSkills(String query) {
         return skillRepository.findByNameContainingIgnoreCase(query).stream()
                 .map(skillMapper::toDTO)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override

@@ -12,8 +12,8 @@ public interface SkillService {
 
     SkillResponse createSkill(SkillCreateRequest request);
     SkillResponse getSkillById(Long id);
-    List<SkillResponse> getAllSkills();
-    List<SkillResponse> searchSkills(String query);
+    Set<SkillResponse> getAllSkills();
+    Set<SkillResponse> searchSkills(String query);
     SkillResponse updateSkill(Long id, SkillUpdateRequest request);
     void deleteSkill(Long id);
     Set<SkillResponse> addSkillsToProfile(Long profileId, ProfileSkillsRequest request);
