@@ -20,7 +20,7 @@ public class PostMapper {
 
     private final LikeRepository likeRepository;
 
-    private UserSummaryResponse mapToUserSummaryResponse(User user) {
+    public UserSummaryResponse mapToUserSummaryResponse(User user) {
         return UserSummaryResponse.builder()
                 .id(user.getId())
                 .firstname(user.getFirstname())
@@ -30,7 +30,7 @@ public class PostMapper {
                 .build();
     }
 
-    private PostResponse mapToPostResponse(Post post, Long currentUserId) {
+    public PostResponse mapToPostResponse(Post post, Long currentUserId) {
         return PostResponse.builder()
                 .id(post.getId())
                 .content(post.getContent())
@@ -42,7 +42,7 @@ public class PostMapper {
                 .build();
     }
 
-    private PostDetailResponse mapToPostDetailResponse(Post post, Long currentUserId) {
+    public PostDetailResponse mapToPostDetailResponse(Post post, Long currentUserId) {
         List<CommentResponse> commentResponses = post.getComments().stream()
                 .map(this::mapToCommentResponse)
                 .collect(Collectors.toList());
@@ -58,7 +58,7 @@ public class PostMapper {
                 .build();
     }
 
-    private CommentResponse mapToCommentResponse(Comment comment) {
+    public CommentResponse mapToCommentResponse(Comment comment) {
         return CommentResponse.builder()
                 .id(comment.getId())
                 .content(comment.getContent())
