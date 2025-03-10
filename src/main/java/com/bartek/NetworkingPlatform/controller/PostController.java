@@ -23,6 +23,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<PostResponse> createPost(
             @Valid @RequestBody PostCreateRequest request
     ) {
@@ -71,6 +72,7 @@ public class PostController {
     }
 
     @GetMapping("/feed")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<Page<PostResponse>> getUserFeed(
             @PageableDefault(size = 10, sort = "createdAt") Pageable pageable
     ) {
@@ -90,6 +92,7 @@ public class PostController {
     }
 
     @PostMapping("/{postId}/like")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<Void> likePost(
             @PathVariable Long postId
     ) {
@@ -99,6 +102,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{postId}/unlike")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<Void> unlikePost(
             @PathVariable Long postId
     ) {
