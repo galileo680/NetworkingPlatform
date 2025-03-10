@@ -15,10 +15,6 @@ public class PostAuthorizationService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public boolean authorize(final Post post) {
-
-    }
-
     public boolean canModifyPost(Authentication authentication, Long postId) {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email).orElse(null);
