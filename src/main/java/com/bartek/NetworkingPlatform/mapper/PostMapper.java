@@ -20,22 +20,14 @@ public class PostMapper {
 
     private final LikeRepository likeRepository;
 
-    public UserSummaryResponse mapToUserSummaryResponse(User user) {
-        return UserSummaryResponse.builder()
-                .id(user.getId())
-                .firstname(user.getFirstname())
-                .lastname(user.getLastname())
-                .headline("")
-                .profileImageUrl("")
-                .build();
-    }
+    private final UserMapper userMapper;
 
     public PostResponse mapToPostResponse(Post post, Long currentUserId) {
         return PostResponse.builder()
                 .id(post.getId())
                 .content(post.getContent())
                 .createdAt(post.getCreatedAt())
-                .author(mapToUserSummaryResponse(post.getUser()))
+                .author(userMapper.mapToUserSummaryResponse(post.getUser()))
                 .commentsCount(post.getComments().size())
                 .likesCount(post.getLikes().size())
                 .likedByCurrentUser(isPostLikedByUser(post, currentUserId))
@@ -51,7 +43,7 @@ public class PostMapper {
                 .id(post.getId())
                 .content(post.getContent())
                 .createdAt(post.getCreatedAt())
-                .author(mapToUserSummaryResponse(post.getUser()))
+                .author(userMapper.mapToUserSummaryResponse(post.getUser()))
                 .comments(commentResponses)
                 .likesCount(post.getLikes().size())
                 .likedByCurrentUser(isPostLikedByUser(post, currentUserId))
@@ -64,7 +56,7 @@ public class PostMapper {
                 .content(comment.getContent())
                 .createdAt(comment.getCreatedAt())
                 .updatedAt(comment.getUpdatedAt())
-                .author(mapToUserSummaryResponse(comment.getUser()))
+                .author(userMapper.mapToUserSummaryResponse(comment.getUser()))
                 .build();
     }
 
