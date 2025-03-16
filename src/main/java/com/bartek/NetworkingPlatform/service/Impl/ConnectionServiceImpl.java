@@ -171,12 +171,8 @@ public class ConnectionServiceImpl implements ConnectionService {
     }
 
     @Override
-    public ConnectionStatus getConnectionStatus(Long user1Id, Long user2Id) {
-        User user1 = userRepository.findById(user1Id)
-                .orElseThrow(() -> new NotFoundException("User with id " + user1Id + " not found"));
-
-        User user2 = userRepository.findById(user2Id)
-                .orElseThrow(() -> new NotFoundException("User with id " + user1Id + " not found"));
+    public ConnectionStatus getConnectionStatus(Long user2Id) {
+        Long user1Id = userUtil.getCurrentUser().getId();
 
         Optional<Connection> connection = connectionRepository.findConnectionBetweenUsers(user1Id, user2Id);
 

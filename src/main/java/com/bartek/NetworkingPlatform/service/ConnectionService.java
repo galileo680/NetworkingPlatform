@@ -18,7 +18,7 @@ public interface ConnectionService {
     Page<ConnectionResponse> getUserConnections(Pageable pageable);
     Page<ConnectionResponse> getPendingSentRequests(Pageable pageable);
     Page<ConnectionResponse> getPendingReceivedRequests(Pageable pageable);
-    ConnectionStatus getConnectionStatus(Long user1Id, Long user2Id);
+    ConnectionStatus getConnectionStatus(Long user2Id);
     List<Long> getConnectedUserIds(Long userId);
     boolean areUsersConnected(Long user1Id, Long user2Id);
 }
