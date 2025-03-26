@@ -8,12 +8,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface JobPostingService {
-    JobPostingResponse createJobPosting(JobPostingCreateRequest request, Long userId);
+    JobPostingResponse createJobPosting(JobPostingCreateRequest request);
     JobPostingResponse getJobPostingById(Long jobId);
-    JobPostingResponse updateJobPosting(Long jobId, JobPostingUpdateRequest request, Long userId);
-    void deleteJobPosting(Long jobId, Long userId);
+    JobPostingResponse updateJobPosting(Long jobId, JobPostingUpdateRequest request);
+    void deleteJobPosting(Long jobId);
     Page<JobPostingResponse> getAllJobPostings(Pageable pageable);
     Page<JobPostingResponse> getJobPostingsByCompany(Long companyId, Pageable pageable);
-    Page<JobPostingResponse> getJobPostingsByUser(Long userId, Pageable pageable);
+    Page<JobPostingResponse> getJobPostingsByUser(Pageable pageable);
     Page<JobPostingResponse> searchJobPostings(JobSearchRequest searchRequest, Pageable pageable);
 }

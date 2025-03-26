@@ -14,6 +14,7 @@ import com.bartek.NetworkingPlatform.repository.CompanyRepository;
 import com.bartek.NetworkingPlatform.repository.JobPostingRepository;
 import com.bartek.NetworkingPlatform.repository.UserRepository;
 import com.bartek.NetworkingPlatform.service.JobPostingService;
+import com.bartek.NetworkingPlatform.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,10 +31,12 @@ public class JobPostingServiceImpl implements JobPostingService {
 
     private final JobPostingMapper jobPostingMapper;
 
+    private final UserUtil userUtil;
+
     @Override
     @Transactional
-    public JobPostingResponse createJobPosting(JobPostingCreateRequest request, Long userId) {
-        User user = findUserOrThrow(userId);
+    public JobPostingResponse createJobPosting(JobPostingCreateRequest request) {
+        User user = userUtil.getCurrentUser();
         Company company = findCompanyOrThrow(request.getCompanyId());
 
         JobPosting jobPosting = JobPosting.builder()
@@ -56,8 +59,9 @@ public class JobPostingServiceImpl implements JobPostingService {
 
     @Override
     @Transactional
-    public JobPostingResponse updateJobPosting(Long jobId, JobPostingUpdateRequest request, Long userId) {
+    public JobPostingResponse updateJobPosting(Long jobId, JobPostingUpdateRequest request) {
         JobPosting jobPosting = findJobPostingOrThrow(jobId);
+        Long userId = userUtil.getCurrentUser().getId();
 
         if (!jobPosting.getPostedBy().getId().equals(userId) && !isUserAdmin(userId)) {
             throw new UnauthorizedException("You do not have permission to update this job offer");
@@ -73,8 +77,9 @@ public class JobPostingServiceImpl implements JobPostingService {
 
     @Override
     @Transactional
-    public void deleteJobPosting(Long jobId, Long userId) {
+    public void deleteJobPosting(Long jobId) {
         JobPosting jobPosting = findJobPostingOrThrow(jobId);
+        Long userId = userUtil.getCurrentUser().getId();
 
         if (!jobPosting.getPostedBy().getId().equals(userId) && !isUserAdmin(userId)) {
             throw new UnauthorizedException("You do not have permission to delete this job offer");
@@ -98,8 +103,8 @@ public class JobPostingServiceImpl implements JobPostingService {
     }
 
     @Override
-    public Page<JobPostingResponse> getJobPostingsByUser(Long userId, Pageable pageable) {
-        User user = findUserOrThrow(userId);
+    public Page<JobPostingResponse> getJobPostingsByUser(Pageable pageable) {
+        User user = userUtil.getCurrentUser();
 
         Page<JobPosting> jobPostings = jobPostingRepository.findByPostedBy(user, pageable);
         return jobPostings.map(jobPostingMapper::mapToJobPostingResponse);
