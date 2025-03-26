@@ -103,8 +103,8 @@ public class JobPostingServiceImpl implements JobPostingService {
     }
 
     @Override
-    public Page<JobPostingResponse> getJobPostingsByUser(Pageable pageable) {
-        User user = userUtil.getCurrentUser();
+    public Page<JobPostingResponse> getJobPostingsByUser(Long userId, Pageable pageable) {
+        User user = findUserOrThrow(userId);
 
         Page<JobPosting> jobPostings = jobPostingRepository.findByPostedBy(user, pageable);
         return jobPostings.map(jobPostingMapper::mapToJobPostingResponse);

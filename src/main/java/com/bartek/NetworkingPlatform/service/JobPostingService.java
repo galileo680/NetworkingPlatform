@@ -14,6 +14,6 @@ public interface JobPostingService {
     void deleteJobPosting(Long jobId);
     Page<JobPostingResponse> getAllJobPostings(Pageable pageable);
     Page<JobPostingResponse> getJobPostingsByCompany(Long companyId, Pageable pageable);
-    Page<JobPostingResponse> getJobPostingsByUser(Pageable pageable);
+    Page<JobPostingResponse> getJobPostingsByUser(Long userId, Pageable pageable);
     Page<JobPostingResponse> searchJobPostings(JobSearchRequest searchRequest, Pageable pageable);
 }
