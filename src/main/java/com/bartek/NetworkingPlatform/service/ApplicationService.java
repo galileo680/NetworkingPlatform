@@ -15,7 +15,7 @@ public interface ApplicationService {
     void deleteApplication(Long applicationId);
     Page<ApplicationResponse> getApplicationsByJobId(Long jobId, Pageable pageable);
     Page<ApplicationResponse> getApplicationsByJobIdAndStatus(Long jobId, ApplicationStatus status, Pageable pageable);
-    Page<ApplicationResponse> getApplicationsByUserId(Long userId, Pageable pageable);
-    Page<ApplicationResponse> getApplicationsByUserIdAndStatus(Long userId, ApplicationStatus status, Pageable pageable);
-    boolean hasUserAppliedForJob(Long jobId, Long userId);
+    Page<ApplicationResponse> getApplicationsByUserId(Pageable pageable);
+    Page<ApplicationResponse> getApplicationsByUserIdAndStatus(ApplicationStatus status, Pageable pageable);
+    boolean hasUserAppliedForJob(Long jobId);
 }

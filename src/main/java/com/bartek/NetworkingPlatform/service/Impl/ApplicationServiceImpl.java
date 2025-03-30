@@ -118,8 +118,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<ApplicationResponse> getApplicationsByUserId(Long userId, Pageable pageable) {
-        findUserOrThrow(userId);
+    public Page<ApplicationResponse> getApplicationsByUserId(Pageable pageable) {
+        Long userId = userUtil.getCurrentUser().getId();
 
         Page<Application> applications = applicationRepository.findByUserId(userId, pageable);
         return applications.map(applicationMapper::mapToApplicationResponse);
@@ -127,8 +127,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<ApplicationResponse> getApplicationsByUserIdAndStatus(Long userId, ApplicationStatus status, Pageable pageable) {
-        findUserOrThrow(userId);
+    public Page<ApplicationResponse> getApplicationsByUserIdAndStatus(ApplicationStatus status, Pageable pageable) {
+        Long userId = userUtil.getCurrentUser().getId();
 
         Page<Application> applications = applicationRepository.findByUserIdAndStatus(userId, status, pageable);
         return applications.map(applicationMapper::mapToApplicationResponse);
@@ -136,7 +136,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean hasUserAppliedForJob(Long jobId, Long userId) {
+    public boolean hasUserAppliedForJob(Long jobId) {
+        Long userId = userUtil.getCurrentUser().getId();
         return applicationRepository.existsByJobIdAndUserId(jobId, userId);
     }
 
